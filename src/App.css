@@ -1,0 +1,64 @@
+body {
+  background-color: #282c34;
+}
+
+.App {
+  text-align: center;
+  background-color: #282c34;
+  height: 100vh;
+  color: white;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table th {
+  border: 1px solid white;
+  text-align: left;
+  padding: 4px;
+  width: 150px;
+}
+
+table td {
+  border: 1px solid white;
+  text-align: left;
+  padding: 4px;
+  width: 150px;
+}
+
+td.no-data {
+  text-align: center;
+  padding: 10px;
+}
+
+.kml-file-picker {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.coordinates-table {
+  margin-bottom: 20px;
+}
