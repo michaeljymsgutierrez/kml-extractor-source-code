@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {
@@ -7,7 +7,17 @@ class App extends Component {
     this.state = {
       kmlContent: null,
       coordinates: [],
+      gKey: null
     };
+
+  }
+
+  componentDidMount() {
+    const gKey = window.localStorage.getItem("gKey");
+
+    if (gKey) {
+      this.setState({ gKey });
+    }
   }
 
   getKmlData(data) {
@@ -18,25 +28,33 @@ class App extends Component {
     if (kml.files[0]) {
       reader.readAsText(kml.files[0]);
       reader.onload = () => {
-        this.setState({kmlContent: reader.result});
+        this.setState({ kmlContent: reader.result });
 
         const coordinates = this.state.kmlContent.match(
-          /(<coordinates).*(coordinates>)/gs,
+          /(<coordinates).*(coordinates>)/gs
         );
         const trimmedCoords = coordinates[0]
-          .replace(/['<coordinates */> /\n]/gs, '')
+          .replace(/['<coordinates */> /\n]/gs, "")
           .trim()
-          .split(',0');
+          .split(",0");
 
         trimmedCoords.forEach(coord => {
-          const splitCoord = coord.split(',');
+          const splitCoord = coord.split(",");
           if (splitCoord[1] && splitCoord[0]) {
             updatedCoordinates.push([splitCoord[1], splitCoord[0]]);
           }
         });
 
-        this.setState({coordinates: updatedCoordinates});
+        this.setState({ coordinates: updatedCoordinates });
       };
+    }
+  }
+
+  addGoogleKey() {
+    const gKey = prompt("Add Google API Key", "");
+    if (gKey) {
+      this.setState({ gKey });
+      window.localStorage.setItem("gKey", gKey);
     }
   }
 
@@ -45,6 +63,14 @@ class App extends Component {
       <div className="App">
         <div className="kml-file-picker">
           <input type="file" onChange={e => this.getKmlData(e)} />
+        </div>
+        <div className="kml-file-picker">
+          <button onClick={() => this.addGoogleKey()}>
+            Add Google API Key
+          </button>
+          <br />
+          <br />
+          GOOGLE KEY: {this.state.gKey}
         </div>
         <div className="coordinates-table">
           <table>
@@ -65,7 +91,9 @@ class App extends Component {
               })}
               {this.state.coordinates.length === 0 && (
                 <tr>
-                  <td colspan="2" className="no-data">NO DATA TO SHOW</td>
+                  <td colSpan="2" className="no-data">
+                    NO DATA TO SHOW
+                  </td>
                 </tr>
               )}
             </tbody>
