@@ -58,19 +58,28 @@ class App extends Component {
   }
 
   verifyCoordinates() {
-    const gUrl =
-      "https://maps.googleapis.com/maps/api/staticmap?size=1200x400&key=AIzaSyAkCJqZc45u1VDLCK1Wb9BaD7IwuLc3Als&path=color:red%7C";
+    if (this.state.gKey && this.state.coordinates.length > 0) {
+      const gUrl = `https://maps.googleapis.com/maps/api/staticmap?size=1200x400&key=${this.state.gKey}&path=color:red%7C`;
 
-    const formattedCoordinates = this.state.coordinates.map(coordinate => {
-      return `${coordinate[0]},${coordinate[1]}`;
-    });
+      const formattedCoordinates = this.state.coordinates.map(coordinate => {
+        return `${coordinate[0]},${coordinate[1]}`;
+      });
 
-    const closingCoordinates = this.state.coordinates[0].join();
+      const closingCoordinates = this.state.coordinates[0].join();
 
-    const mapUrl = `${gUrl}
+      const mapUrl = `${gUrl}
     ${formattedCoordinates.join("|")}|${closingCoordinates}`;
 
-    window.open(mapUrl, "_blank");
+      window.open(mapUrl, "_blank");
+    } else {
+      if (this.state.coordinates.length === 0) {
+        alert("Please Select KML file...");
+      } else if (this.state.gKey === null) {
+        alert("Please Add Google API Key...");
+      } else {
+        alert("Unknow error...");
+      }
+    }
   }
 
   render() {
@@ -83,7 +92,7 @@ class App extends Component {
           <button onClick={() => this.addGoogleKey()}>
             Add Google API Key
           </button>
-          &nbsp;
+          &nbsp; &nbsp; &nbsp;
           <button onClick={() => this.verifyCoordinates()}>
             Verify Coordinates
           </button>
