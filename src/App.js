@@ -9,7 +9,6 @@ class App extends Component {
       coordinates: [],
       gKey: null
     };
-
   }
 
   componentDidMount() {
@@ -58,6 +57,22 @@ class App extends Component {
     }
   }
 
+  verifyCoordinates() {
+    const gUrl =
+      "https://maps.googleapis.com/maps/api/staticmap?size=1200x400&key=AIzaSyAkCJqZc45u1VDLCK1Wb9BaD7IwuLc3Als&path=color:red%7C";
+
+    const formattedCoordinates = this.state.coordinates.map(coordinate => {
+      return `${coordinate[0]},${coordinate[1]}`;
+    });
+
+    const closingCoordinates = this.state.coordinates[0].join();
+
+    const mapUrl = `${gUrl}
+    ${formattedCoordinates.join("|")}|${closingCoordinates}`;
+
+    window.open(mapUrl, "_blank");
+  }
+
   render() {
     return (
       <div className="App">
@@ -67,6 +82,10 @@ class App extends Component {
         <div className="kml-file-picker">
           <button onClick={() => this.addGoogleKey()}>
             Add Google API Key
+          </button>
+          &nbsp;
+          <button onClick={() => this.verifyCoordinates()}>
+            Verify Coordinates
           </button>
           <br />
           <br />
