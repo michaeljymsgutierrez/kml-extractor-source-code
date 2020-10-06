@@ -6,7 +6,7 @@ Installation
 - npm install
 
 Run Project
-- yarn start `or` npm start
+- npm start
 
 
 See it live on https://michaeljymsgutierrez.github.io/kml-extractor/
