@@ -3,7 +3,7 @@
 
 Installation
 - git clone https://github.com/michaeljymsgutierrez/kml-extractor-source-code.git
-- yarn install `or` npm install
+- npm install
 
 Run Project
 - yarn start `or` npm start
