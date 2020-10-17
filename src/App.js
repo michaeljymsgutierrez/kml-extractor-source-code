@@ -52,7 +52,7 @@ const App = (props) => {
     } else {
       if (coordinates.length === 0) {
         alert("Please Select KML file...");
-      } else if (this.state.gKey === null) {
+      } else if (gKey === null || gKey === "") {
         alert("Please Add Google API Key...");
       } else {
         alert("Unknow error...");
