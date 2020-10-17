@@ -80,12 +80,15 @@ const App = (props) => {
       <div className="kml-file-picker">
         <input type="file" onChange={(e) => getKmlData(e)} />
       </div>
+
       <div className="kml-file-picker">
         <button onClick={() => addGoogleKey()}>Add Google API Key</button>
         &nbsp; &nbsp; &nbsp;
         <button onClick={() => verifyCoordinates()}>Verify Coordinates</button>
-        <br /> <br />
-        GOOGLE KEY: {gKey}
+      </div>
+
+      <div className="kml-file-picker">
+        GOOGLE KEY: {gKey ? gKey : " -- NO API KEY -- "}
       </div>
 
       <div className="coordinates-table">

@@ -1,64 +1,72 @@
-body {
-  background-color: #282c34;
-}
-
 .App {
-  text-align: center;
-  background-color: #282c34;
-  height: 100vh;
-  color: white;
+  --nm: 6px 6px 16px 0 rgba(0, 0, 0, 0.2),
+    -6px -6px 16px 0 rgba(255, 255, 255, 1);
+
+  --nm-inset: inset 4px 4px 8px 0 rgba(0, 0, 0, 0.2),
+    inset -4px -4px 8px 0 rgba(255, 255, 255, 0.8);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input,
+button {
+  color: #818590;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 40px;
+  background-color: var(--bg-color);
+  box-shadow: var(--nm);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button:focus,
+input:focus {
+  outline: none;
+}
+
+button:hover {
+  box-shadow: var(--nm-inset);
+}
+
+.kml-file-picker {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 20px;
+  color: #818590;
+  font-size: 14px;
+  font-weight: 600;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.coordinates-table {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
 }
 
-table {
-  margin-left: auto;
-  margin-right: auto;
+.coordinates-table table {
+  color: #818590;
   border-collapse: collapse;
+  background-color: var(--bg-color);
+  box-shadow: var(--nm);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 table th {
   border: 1px solid white;
   text-align: left;
-  padding: 4px;
-  width: 150px;
+  padding: 10px;
+  width: 200px;
 }
 
 table td {
   border: 1px solid white;
   text-align: left;
-  padding: 4px;
-  width: 150px;
+  padding: 10px;
+  width: 200px;
 }
 
 td.no-data {
   text-align: center;
   padding: 10px;
-}
-
-.kml-file-picker {
-  margin-top: 50px;
-  margin-bottom: 10px;
-}
-
-.coordinates-table {
-  margin-bottom: 20px;
 }
