@@ -77,6 +77,11 @@ const App = (props) => {
 
   return (
     <div className="App">
+      <span id="forkongithub">
+        <a href="https://github.com/michaeljymsgutierrez/kml-extractor-source-code">
+          Fork me on GitHub
+        </a>
+      </span>
       <div className="kml-file-picker">
         <input type="file" onChange={(e) => getKmlData(e)} />
       </div>
