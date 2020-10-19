@@ -52,18 +52,22 @@ button:hover {
   transition: box-shadow 0.3s ease-in-out;
 }
 
+table td:hover {
+  box-shadow: var(--nm-inset);
+}
+
 table th {
   border: 1px solid white;
   text-align: left;
   padding: 10px;
-  width: 200px;
+  width: 160px;
 }
 
 table td {
   border: 1px solid white;
   text-align: left;
   padding: 10px;
-  width: 200px;
+  width: 160px;
 }
 
 td.no-data {
@@ -84,10 +88,12 @@ td.no-data {
   position: relative;
   transition: 0.5s;
 }
+
 #forkongithub a:hover {
   background: #c11;
   color: #fff;
 }
+
 #forkongithub a::before,
 #forkongithub a::after {
   content: "";
@@ -99,10 +105,12 @@ td.no-data {
   height: 1px;
   background: #fff;
 }
+
 #forkongithub a::after {
   bottom: 1px;
   top: auto;
 }
+
 @media screen and (min-width: 800px) {
   #forkongithub {
     position: fixed;
@@ -114,6 +122,7 @@ td.no-data {
     height: 200px;
     z-index: 9999;
   }
+
   #forkongithub a {
     width: 200px;
     position: absolute;
