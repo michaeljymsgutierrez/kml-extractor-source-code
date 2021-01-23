@@ -18,6 +18,21 @@ describe("KML Extractor test", () => {
     );
   });
 
+  it("Verify google api key insertion", () => {
+    const promptSpy = jest.spyOn(window, "prompt");
+    promptSpy.mockImplementation(jest.fn(() => "random-google-api-key"));
+
+    const { getByText, container } = render(<App />, root);
+    const addGoogleKeyButton = getByText("Add Google API Key");
+
+    fireEvent.click(addGoogleKeyButton);
+    expect(promptSpy.mock.results[0].value).toBe("random-google-api-key");
+
+    expect(
+      container.querySelector(".kml-file-picker:nth-child(4)").textContent
+    ).toBe("GOOGLE KEY: random-google-api-key");
+  });
+
   it("Verify coordinates button renders correctly", () => {
     const { getByText } = render(<App />, root);
     expect(getByText("Verify Coordinates").textContent).toBe(
