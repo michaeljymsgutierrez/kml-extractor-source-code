@@ -13,4 +13,8 @@ Run Project
 
 - npm start
 
+Test Project
+
+- npm test
+
 See it live on https://michaeljymsgutierrez.github.io/kml-extractor/
