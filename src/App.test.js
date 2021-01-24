@@ -11,6 +11,11 @@ describe("KML Extractor test", () => {
     expect(container).toBeTruthy();
   });
 
+  it("Coordinates table renders correctly", () => {
+    const { container } = render(<App />, root);
+    expect(container.querySelector(".coordinates-table > table")).toBeTruthy();
+  });
+
   it("Add google api key button renders correctly", () => {
     const { getByText } = render(<App />, root);
     expect(getByText("Add Google API Key").textContent).toBe(
