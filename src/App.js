@@ -13,23 +13,27 @@ const App = (props) => {
     if (kml.files[0]) {
       reader.readAsText(kml.files[0]);
       reader.onload = () => {
-        const kmlCoordinates = reader.result.match(
-          /(<coordinates).*(coordinates>)/gs
-        );
+        try {
+          const kmlCoordinates = reader.result.match(
+            /(<coordinates).*(coordinates>)/gs
+          );
 
-        const trimmedCoords = kmlCoordinates[0]
-          .replace(/['<coordinates */> /\n]/gs, "")
-          .trim()
-          .split(",0");
+          const trimmedCoords = kmlCoordinates[0]
+            .replace(/['<coordinates */> /\n]/gs, "")
+            .trim()
+            .split(",0");
 
-        trimmedCoords.forEach((coord) => {
-          const splitCoord = coord.split(",");
-          if (splitCoord[1] && splitCoord[0]) {
-            updatedCoordinates.push([splitCoord[1], splitCoord[0]]);
-          }
-        });
+          trimmedCoords.forEach((coord) => {
+            const splitCoord = coord.split(",");
+            if (splitCoord[1] && splitCoord[0]) {
+              updatedCoordinates.push([splitCoord[1], splitCoord[0]]);
+            }
+          });
 
-        setCoordinates(updatedCoordinates);
+          setCoordinates(updatedCoordinates);
+        } catch (error) {
+          alert("Invalid KML file...");
+        }
       };
     }
   };
